@@ -710,7 +710,7 @@ test("App renders without crashing", () => {
   render(<App />);
 });
 
-test("Season shows correctly when selected", async () => {
+test("Season 1 shows correctly when selected", async () => {
   mockFetchEpisodes.mockResolvedValueOnce(episodes);
 
   const { getByText } = render(<App />);
@@ -723,4 +723,61 @@ test("Season shows correctly when selected", async () => {
   expect(text).toBeInTheDocument();
   userEvent.click(text);
   getByText(/Season 1, Episode 1/i);
+  getByText(/Season 1, Episode 2/i);
+  getByText(/Season 1, Episode 3/i);
+  getByText(/Season 1, Episode 4/i);
+  getByText(/Season 1, Episode 5/i);
+});
+
+test("Season 2 shows correctly when selected", async () => {
+  mockFetchEpisodes.mockResolvedValueOnce(episodes);
+
+  const { getByText } = render(<App />);
+  await wait(() => {
+    getByText(/Select a season/i);
+  });
+  const dropDown = getByText(/Select a season/i);
+  userEvent.click(dropDown);
+  const text = getByText(/Season 2/i);
+  expect(text).toBeInTheDocument();
+  userEvent.click(text);
+  getByText(/Season 2, Episode 1/i);
+  getByText(/Season 2, Episode 2/i);
+  getByText(/Season 2, Episode 3/i);
+  getByText(/Season 2, Episode 4/i);
+  getByText(/Season 2, Episode 5/i);
+});
+
+test("Season 3 shows correctly when selected", async () => {
+  mockFetchEpisodes.mockResolvedValueOnce(episodes);
+
+  const { getByText } = render(<App />);
+  await wait(() => {
+    getByText(/Select a season/i);
+  });
+  const dropDown = getByText(/Select a season/i);
+  userEvent.click(dropDown);
+  const text = getByText(/Season 3/i);
+  expect(text).toBeInTheDocument();
+  userEvent.click(text);
+  getByText(/Season 3, Episode 1/i);
+  getByText(/Season 3, Episode 2/i);
+  getByText(/Season 3, Episode 3/i);
+  getByText(/Season 3, Episode 4/i);
+  getByText(/Season 3, Episode 5/i);
+});
+
+test("Season 4 shows correctly when selected", async () => {
+  mockFetchEpisodes.mockResolvedValueOnce(episodes);
+
+  const { getByText } = render(<App />);
+  await wait(() => {
+    getByText(/Select a season/i);
+  });
+  const dropDown = getByText(/Select a season/i);
+  userEvent.click(dropDown);
+  const text = getByText(/Season 4/i);
+  expect(text).toBeInTheDocument();
+  userEvent.click(text);
+  getByText(/Season 4, Episode 1/i);
 });
